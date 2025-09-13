@@ -1,11 +1,22 @@
+import { useEffect } from "react";
 import "./App.css";
+import Header from "./component/header";
+import Portfoliototal from "./component/portfoliototal";
 
 function App() {
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch("/data.json");
+      console.log("data : ", response);
+    };
+    getData();
+  }, []);
   return (
     <>
-      <div className="w-full h-screen flex justify-center items-center">
-        <div className="w-50 h-50 border-2 border-black flex justify-center items-center">
-          <h1 className="bg-red-500">Vite + React</h1>
+      <div className="min-h-screen w-screen bg-[#212124] flex flex-col items-center">
+        <Header />
+        <div className="flex-1 w-full flex flex-col items-center justify-start p-4 sm:p-7 gap-4 sm:gap-12">
+          <Portfoliototal />
         </div>
       </div>
     </>
